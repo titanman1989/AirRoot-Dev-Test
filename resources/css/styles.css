@@ -1,0 +1,85 @@
+.profile-pic{
+background: darkseagreen;
+color: #eeeeee;
+/*    border-radius: 50%;*/
+height: 60px;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+font-size: 1.1rem;
+-webkit-box-shadow: 0 3px 5px rgb(54 60 241);
+box-shadow: 0 3px 5px rgb(54 60 241);
+}
+.card {
+position: relative;
+display: flex;
+flex-direction: column;
+overflow: hidden;
+border-radius: 0!important;
+}
+/*   .center-cropped{
+object-fit: cover;
+object-position: center;
+height: 337px;
+
+}*/
+.center-cropped {
+height: 450px;
+
+
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 50%;
+
+}
+.item-image .item-image-loaded {
+opacity: 1;
+}
+.checkbox {
+    height: 1.9rem !important;
+    width: 1.9rem !important;
+border-radius: 50% !important;
+    background-color: rgb(238 238 238 / 0%);
+      border: 1pX solid #ccc !important;
+}
+/* img {width: 300px;
+height: 337px;
+object-fit: cover;
+}*/
+[type='checkbox']:focus, [type='radio']:focus {
+
+    --tw-ring-color: transparent !important;
+   	    --tw-shadow-color: rgb(6 182 212/0.5) !important;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%), 0 1px 5px 0 rgb(0 0 0 / 20%);
+
+
+}
+
+
+/*
+.checkbox:checked, .checkbox[checked="true"]{
+	    background: #cfd8dc;
+    background: -webkit-linear-gradient(45deg, #cfd8dc, #546e7a) !important;
+    background: linear-gradient(45deg, #cfd8dc, #546e7a) !important;
+}
+*/
+.checkbox:checked, .checkbox[checked="true"] {
+    --tw-bg-opacity: 1;
+    background-color: hsl(var(--pc) / var(--tw-bg-opacity));
+    background-repeat: no-repeat;
+    -webkit-animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+    animation: checkmark var(--animation-input, 0.2s) ease-in-out;
+    background-image: linear-gradient(-45deg, transparent 65%, hsl(var(--chkbg)) 65.99%), linear-gradient(45deg, transparent 75%, hsl(var(--chkbg)) 75.99%), linear-gradient(-45deg, hsl(var(--chkbg)) 40%, transparent 40.99%), linear-gradient(45deg, hsl(var(--chkbg)) 30%, hsl(var(--chkfg)) 30.99%, hsl(var(--chkfg)) 40%, transparent 40.99%), linear-gradient(-45deg, hsl(var(--chkfg)) 50%, hsl(var(--chkbg)) 50.99%);
+}
+
+
+.checkbox_photo_select{
+    display: none;
+}
+
+.div-delete-photo{
+    display: none;
+}
+
