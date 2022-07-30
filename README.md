@@ -1,64 +1,65 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# AirRoot Dev
+|||
+|--------------------------------------------------------------------|---|
+|1. สร้าง Git เพื่อจัดการ source code ด้วย Git อะไรก็ได้ เช่น Github, Gitlab|	✅	|
+|2. ออกแบบและพัฒนาเว็บ ไซด์ด้วย Laravel|	✅	|
+|.....2.1. มีระบบ authentication|	✅|
+|.....2.2. ผู้ที่สมัครสมาชิกสามารถ upload รูปได้|	✅|
+|.........2.2.1. เก็บ รูปลง local storage|✅|
+|.........2.2.2. เก็บข้อ มูลรูปลง database เช่น size, mime, date time create|✅|
+|.........2.2.3. สามารถลบ เปลี่ยน รูปได้|✅|
+|.....2.3. มีหน้าสำหรับแสดงรูปภาพทั้งหมด โดยเรียงแถวละ 1 รูปและแสดง mime, size, date time create แสดงขนาดรูปรวมอยู่ด้านบนสุดและแยกตาม mime รูป เช่น jpg, gif, png|✅	|
+|.....2.4. เจ้า ของรูปที่ upload สามารถสร้าง catalog ของรูปภาพได้|✅	|
+|.........2.4.1. เก็บ ข้อมูล catalog ใน database|✅|
+|.........2.4.2. ใน 1 catalog มีรูปภาพได้ไม่จำกัด|✅|
+|.........2.4.3. สามารถนํารูปภาพที่ upload มาเข้า catalog ได้|✅|
+|.........2.4.4. สามารถเลือกรูปให้แสดงตามลาํ ดับได้|✅|
+|.........2.4.5. สามารถ ลบ หรือเปลี่ยนชื่อ catalog ได้|✅|
+|.....2.5. มีหน้าสำหรับแสดงรูปภาพใน catelog โดยเอาเฉพาะรูปภาพใน catelog นั้น ออกมาแสดง แสดง เฉพาะรูปใน 1 แถวมี 3 รูป แสดงขนาดรูปรวมอยู่ด้นนบนสุดและแยกค้นหาตาม mime รูป เช่น jpg, gif, png|	✅|
+|.....2.6. ส่ง email บอกเม่ือ upload ขนาดรูปใกล้ ตม็ (90%) โดยกำหนดพื้นฐานคือ 100mb แก่สมาชิกที่ upload รูปขึ้นมา|✅	|
 
-## About Laravel
+## Run Locally
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Clone the project
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```bash
+  git clone https://link-to-project
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Go to the project directory
 
-## Learning Laravel
+```bash
+  cd my-project
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+To run all of your outstanding migrations, execute the migrate Artisan command:
+```bash
+  php artisan migrate
+```
+Running Seeders
+```bash
+  php artisan db:seed
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Install dependencies
+```bash
+  composer install
+```
+```bash
+  npm install
+```
 
-## Laravel Sponsors
+Start the server
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```bash
+  npm run dev
+```
 
-### Premium Partners
+```bash
+  php artisan serve
+```
+## Screenshots
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+![App Screenshot](https://github.com/titanman1989/AirRoot-Dev-Test/blob/115ea2bf06066697da4df300b2920aab615e56a2/public/Screenshot%202565-07-31%20at%2003.34.18.png) ![App Screenshot](https://github.com/titanman1989/AirRoot-Dev-Test/blob/115ea2bf06066697da4df300b2920aab615e56a2/public/Screenshot%202565-07-31%20at%2003.34.42.png)
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
