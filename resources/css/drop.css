@@ -7,10 +7,12 @@
  max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            border-radius: 14px;
-            margin: 60px 0 0 0;
-            background: #e3e6ff;
-            border: 1px dotted #4e4e4e;            
+           background: rgba( 255, 255, 255, 0.2 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 11.5px );
+-webkit-backdrop-filter: blur( 11.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );          
 }
 @-webkit-keyframes passing-through {
   0% {
@@ -231,7 +233,7 @@
 }
 
 .dropzone {
-  min-height: 150px;
+  min-height: 200px;
   border: 2px solid rgba(0, 0, 0, 0.3);
   background: white;
   padding: 20px 20px;
@@ -263,6 +265,7 @@
 }
 
 .dropzone .dz-message {
+  font-size:2rem;
   text-align: center;
   margin: 2em 0;
 }

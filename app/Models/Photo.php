@@ -45,8 +45,22 @@ class Photo extends Model
 
 }
 
+  public static function getCheckStorage(){
+    $user = Auth::user(); 
+    $photo = DB::table('photo as p');
+        $photo->leftJoin('users as u','p.user_id','u.id');
+        $photo->select('u.name','u.email','u.id',DB::raw('sum(p.photo_size) as size'));
+         $photo->whereNull('deleted_at');
+        $photo->groupBy('user_id');
+        $photo->havingRaw('sum(p.photo_size) >= ?', [90000000.00]);
+        return $photo->get();
+    
+
+
 }
 
+
+}
 
 
 

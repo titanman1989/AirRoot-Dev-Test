@@ -7,7 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SentEmail extends Mailable
+
+class MailCheckStorage extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +17,9 @@ class SentEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+     public function __construct($maildata)
     {
-        //
+        $this->maildata = $maildata;
     }
 
     /**
@@ -28,11 +29,7 @@ class SentEmail extends Mailable
      */
     public function build()
     {   
-
-         
-         return $this->from('ipond_love@me.com')
-        ->view('email.notify-storage-mail');
-
-
+         $data = $this->maildata;
+        return $this->markdown('email.checkstorage')->with('data',$this->maildata);
     }
 }

@@ -34,6 +34,22 @@ background-size: cover;
 background-position: 50%;
 
 }
+.photos-cropped{
+     height:  10rem;
+     width: 10rem;
+
+
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 50%;           
+}
+.center-cropped-select{
+height:350px;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 50%;
+}
+
 .item-image .item-image-loaded {
 opacity: 1;
 }
@@ -83,3 +99,56 @@ object-fit: cover;
     display: none;
 }
 
+.modal-header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+
+.bg-none {
+  background-image: none;
+}
+
+/* configurable with the "linearGradientDirections" and "linearGradientColors" theme objects */
+.bg-gradient-[direction-key]-[color-key] {
+  background-image: linear-gradient([direction-value], [color-value-1], [color-value-2], [...]);
+}
+
+/* configurable with the "radialGradientShapes", "radialGradientSizes", "radialGradientPositions", and "radialGradientColors" theme objects */
+/* note that the "default" [shape-key], [size-key], and [position-key] are omitted from the class */
+.bg-radial-[shape-key]-[size-key]-[position-key]-[color-key] {
+  background-image: radial-gradient([shape-value] [size-value] at [position-value], [color-value-1], [color-value-2], [...]);
+}
+
+/* configurable with the "conicGradientStartingAngles", "conicGradientPositions", and "conicGradientColors" theme objects */
+/* note that the "default" [starting-angle-key] and [position-key] are omitted from the class */
+.bg-conic-[starting-angle-key]-[position-key]-[color-key] {
+  background-image: conic-gradient(from [starting-angle-value] at [position-value], [color-value-1], [color-value-2], [...]);
+}
+
+/* configurable with the "repeatingLinearGradientDirections", "repeatingLinearGradientColors", and "repeatingLinearGradientLengths" theme objects */
+.bg-gradient-[direction-key]-[color-key]-[length-key] {
+  background-image: repeating-linear-gradient([direction-value], [color-value-1], [color-value-2], [...] [length-value]);
+}
+
+/* configurable with the "repeatingRadialGradientShapes", "repeatingRadialGradientSizes", "repeatingRadialGradientPositions", "repeatingRadialGradientColors", and "repeatingRadialGradientLengths" theme objects */
+/* note that the "default" [shape-key], [size-key], and [position-key] are omitted from the class */
+.bg-radial-[shape-key]-[size-key]-[position-key]-[color-key]-[length-key] {
+  background-image: repeating-radial-gradient([shape-value] [size-value] at [position-value], [color-value-1], [color-value-2], [...] [length-value]);
+}
+
+/* configurable with the "repeatingConicGradientStartingAngles", "repeatingConicGradientPositions", "repeatingConicGradientColors", and "repeatingConicGradientLengths" theme objects */
+/* note that the "default" [starting-angle-key] and [position-key] are omitted from the class */
+.bg-conic-[starting-angle-key]-[position-key]-[color-key]-[length-key] {
+  background-image: repeating-conic-gradient(from [starting-angle-value] at [position-value], [color-value-1], [color-value-2], [...] [length-value]);
+}

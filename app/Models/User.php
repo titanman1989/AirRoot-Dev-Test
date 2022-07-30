@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
+use App\Models\Album;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -17,6 +17,12 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    // public function contacts()
+    // {
+    //     return $this->hasMany(Album::class, 'user_id');
+    // }
+
     protected $fillable = [
         'name',
         'email',

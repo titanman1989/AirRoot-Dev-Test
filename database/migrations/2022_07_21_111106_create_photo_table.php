@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('photo', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('album_id')->constrained('album')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            // $table->foreignId('album_id')->constrained('album')->onUpdate('cascade')->onDelete('cascade')->nullable();
+            $table->integer('album_id')->nullable();
             $table->string('photo_name');
             $table->string('photo_extension');
             $table->string('photo_width');

@@ -27,7 +27,8 @@ class Album extends Model
 
     $myAlbum = DB::table('album')
         ->where('user_id',$id)
-        ->whereNull('deleted_at');
+        ->whereNull('deleted_at')
+        ->orderBy('id','desc');
 
         return $myAlbum->paginate(10);
     
@@ -38,7 +39,7 @@ class Album extends Model
  public static function getAlbumUser($id){
 
     $myAlbum = DB::table('album as a')
-        ->leftJoin('photo as p','p.album_id','a.id')
+        ->join('photo as p','p.album_id','a.id')
         ->where('a.id',$id)
         ->whereNull('p.deleted_at');
         return $myAlbum->paginate(25);

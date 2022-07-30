@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use App\Models\Photo;
 use Image;
 use Auth;
 use Redirect;
+
 class ImageController extends Controller
 {   
           public function __construct()
@@ -19,15 +21,24 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // dd(phpinfo());
-                 $user            = Auth::user(); 
-            $photos = Photo::where('user_id',$user->id)->orderBy('id','desc')->paginate(5);
-            $size  = Photo::getPhotoSize();
+        // $getCheckStorage = Photo::getCheckStorage();
+        $mime   = $request->input('mi');
+        $user   = Auth::user(); 
+        $photos = Photo::leftJoin('album as a','photo.album_id','a.id');
+        $photos->select('photo.*','a.album_name');
+        $photos->where('photo.user_id',$user->id);
+        if ($mime) {
+            $photos->where('photo.photo_mime',$mime);
+        }
+        $photos->orderBy('photo.id','desc');
+        $photos = $photos->paginate(5);
+        $size   = Photo::getPhotoSize();
         
-         return view('dashboard',compact('photos','size'));
-    }
+        return view('dashboard',compact('photos','size','mime'));
+      }
 
     /**
      * Show the form for creating a new resource.
@@ -52,23 +63,26 @@ class ImageController extends Controller
         // $imageName = time().'.'.$image->extension(); 
         // $image->move(public_path('images'),$imageName);  
         // return response()->json(['success'=>$imageName]);
+        // $gName = explode('@', );
+        $gName = Str::of($user->email)->explode('@');
+        $gNameReDot = Str::replace('.', '-', $gName[0]);
+
 
         try {
       if ($request->file('file')->isValid()) {
         $image = $request->file('file');
 
-
         $imgFile  = Image::make($image->getRealPath());
         $extension = $image->getClientOriginalExtension();
         $clientOriginalName = $image->getClientOriginalName();
-        $photo_name = time() . $clientOriginalName;
+        $photo_name = $gNameReDot.'-'.md5(microtime()).'.'.$extension;
         $width = $imgFile->width();
         $height = $imgFile->height();
         $mime = $imgFile->mime();
         $size = $imgFile->filesize();
         // Save File to local drive
         Storage::putFileAs('photos',$image , $photo_name);
-
+// dd($photo);
         //Save File to Photo table
         $photo = new Photo();
         $photo->user_id = $user->id;
@@ -83,17 +97,6 @@ class ImageController extends Controller
         $photo->save();
 
 
-    // 'user_id',
-    // 'album_id',
-    // 'photo_name',
-
-    // 'photo_extension',
-    // 'photo_width',
-    // 'photo_height',
-    // 'photo_size',
-    // 'photo_mime',
-    // 'photo_status',
-
 
         return response()->json([
           // 'path' => $path,
@@ -106,24 +109,7 @@ class ImageController extends Controller
       return $th->getMessage();
     }
 
-        // $this->validate($request, [
-        //     'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        // ]);
-        // $image = $request->file('file');
-        // $input['file'] = time().'.'.$image->getClientOriginalExtension();
-        
-        // $destinationPath = public_path('/thumbnail');
-        // $imgFile = Image::make($image->getRealPath());
-        // $imgFile->resize(300, null, function ($constraint) {
-        //     $constraint->aspectRatio();
-        // })->save($destinationPath.'/'.$input['file']);
-
-
-        // $destinationPath = public_path('/uploads');
-        // $image->move($destinationPath, $input['file']);
-        // return back()
-        //     ->with('success','Image has successfully uploaded.')
-        //     ->with('fileName',$input['file']);
+      
     }
 
     /**
@@ -185,23 +171,5 @@ public function imageDelete($id)
         // $photo = Photo::find($id);
     }
 
-    public function resizeImage(Request $request)
-    {
-        $this->validate($request, [
-            'file' => 'required|image|mimes:jpg,jpeg,png,gif,svg|max:2048',
-        ]);
-        $image = $request->file('file');
-        $input['file'] = time().'.'.$image->getClientOriginalExtension();
-        
-        $destinationPath = public_path('/thumbnail');
-        $imgFile = Image::make($image->getRealPath());
-        $imgFile->resize(150, 150, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save($destinationPath.'/'.$input['file']);
-        $destinationPath = public_path('/uploads');
-        $image->move($destinationPath, $input['file']);
-        return back()
-            ->with('success','Image has successfully uploaded.')
-            ->with('fileName',$input['file']);
-    }
+  
 }

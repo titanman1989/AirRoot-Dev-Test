@@ -1,11 +1,11 @@
-<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-4">
+<div class="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-6 lg:grid-cols-6 xl:grid-cols-6 gap-1">
 	@foreach($photos as $photo)
-	<div class="card mr-2" >
-		<div class="absolute mt-1 ml-1">
-    <input type="checkbox" name="photo_select[]" value="{{ $photo->id }}" class="checkbox" />
-    </div>
-								<img  class="card-img-top"  src="{{ asset('photos/'.$photo->photo_name) }}" \/>
-		
-	</div>
+	<div class="center-cropped-select item-image item-image-loaded " style="background-image:url({{ getPhoto($photo->photo_name) }});">
+							<div class="absolute mt-2 ml-2 " >
+								<input type="checkbox" data-theme="halloween" name="photo_select[]"  value="{{ $photo->id }}" class="checkbox" />
+							</div>
+							
+						</div>
 	@endforeach
 </div>
+
